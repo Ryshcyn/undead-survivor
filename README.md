@@ -44,6 +44,20 @@
 
 其中两个角色需要通过累计击杀或完成一局游戏解锁，状态通过 `PlayerPrefs` 保存。
 
+### 生成式 AI 角色动画工作流
+
+我使用生成式 AI 辅助制作角色的 Run、Stand 和 Dead 动作序列，再将结果整理为透明底 Sprite Sheet。导入 Unity 后以 Multiple Sprite 模式手动切分为 12 个精灵帧（`lupa_0` 至 `lupa_11`），分别组成待机、移动和死亡动画。
+
+![AI-assisted character sprite sheet](docs/images/ai-character-sprite-sheet.png)
+
+动画结构没有为每名角色重复搭建状态机。我先在共享的 `AcPlayer` Animator Controller 中配置 Stand、Run、Dead 状态及转换条件，再通过 `AnimatorOverrideController` 为不同角色替换对应 Animation Clip。这样可以复用状态逻辑，同时保留每名角色独立的序列帧表现。
+
+| 共享 Animator 状态机 | 角色动画覆盖配置 |
+| --- | --- |
+| ![Stand, Run and Dead states](docs/images/animator-state-machine.png) | ![Animator Override Controller](docs/images/animator-override-controller.png) |
+
+完整流程包括：参考图与动作需求整理、AI 序列帧生成、透明背景处理、Sprite Sheet 切片、Animation Clip 制作、Animator 状态转换配置以及多角色动画复用。生成式 AI 负责加快素材原型制作，我负责素材筛选、修整和 Unity 内的全部落地配置。
+
 ### 战斗与成长
 
 - 旋转近战武器持续攻击并具有无限穿透。
