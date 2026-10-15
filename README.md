@@ -20,8 +20,11 @@
 
 ## 演示与文档
 
+- [下载 macOS 可运行版本](https://github.com/Ryshcyn/undead-survivor/releases/latest)
 - [约1分钟实机演示](docs/video/Undead_Survivor_Demo.mp4)
 - [游戏设计与技术说明](docs/Undead_Survivor_Design_Document_CN.pdf)
+
+Release 提供同时支持 Apple Silicon 与 Intel Mac 的通用版本，无需安装 Unity。解压后运行 `Undead Survivor.app`；由于当前版本未经过 Apple 公证，若系统首次阻止启动，请在访达中右键应用并选择“打开”。
 
 ## 核心玩法
 
@@ -94,7 +97,7 @@ GameManager
 └── HUD Result Settings and Audio
 ```
 
-## 运行项目
+## 在 Unity 中运行项目
 
 1. 安装 Unity Hub。
 2. 使用 Unity `6000.3.10f1` 或兼容的 Unity 6 版本打开仓库根目录。
